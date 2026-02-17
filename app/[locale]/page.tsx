@@ -1,6 +1,5 @@
-import { getDictionary } from "../../i18n/getDictionary";
-import HeroSection from "../../components/HeroSection";
-import StandardsSection from "../../components/StandardsSection";
+import { getDictionary } from "@/i18n/getDictionary";
+import StandardsSection from "@/components/StandardsSection";
 
 export default async function Home({
   params,
@@ -11,7 +10,6 @@ export default async function Home({
 
   return (
     <>
-      <HeroSection dictionary={dictionary} />
       <StandardsSection />
     </>
   );
