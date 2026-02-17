@@ -5,5 +5,9 @@ export default async function AboutPage({
 }) {
   const { locale } = await params;
 
-  return <div>About {locale}</div>;
+  return (
+    <div className="p-10">
+      <h1>About ({locale})</h1>
+    </div>
+  );
 }
