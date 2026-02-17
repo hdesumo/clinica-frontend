@@ -1,21 +1,22 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+type LanguageSwitcherProps = {
+  currentLocale: string;
+};
 
-export default function LanguageSwitcher() {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const switchLanguage = (locale: string) => {
-    const segments = pathname.split("/");
-    segments[1] = locale;
-    router.push(segments.join("/"));
-  };
+export default function LanguageSwitcher({
+  currentLocale,
+}: LanguageSwitcherProps) {
+  const otherLocale = currentLocale === "en" ? "fr" : "en";
 
   return (
-    <div className="flex gap-2">
-      <button onClick={() => switchLanguage("en")}>EN</button>
-      <button onClick={() => switchLanguage("fr")}>FR</button>
+    <div className="ml-4">
+      <a
+        href={`/${otherLocale}`}
+        className="text-sm text-[#0B3C5D] font-medium hover:underline"
+      >
+        {otherLocale.toUpperCase()}
+      </a>
     </div>
   );
 }
