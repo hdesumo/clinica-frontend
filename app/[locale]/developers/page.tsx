@@ -1,6 +1,6 @@
-import SectionTitle from "@/components/dev/SectionTitle";
-import EndpointCard from "@/components/dev/EndpointCard";
-import CodeBlock from "@/components/dev/CodeBlock";
+import SectionTitle from "../../../components/dev/SectionTitle";
+import EndpointCard from "../../../components/dev/EndpointCard";
+import CodeBlock from "../../../components/dev/CodeBlock";
 
 export default function DevelopersPage({
   params,
