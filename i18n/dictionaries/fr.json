@@ -1,0 +1,14 @@
+{
+  "hero": {
+    "title": "Infrastructure d’Intelligence Clinique pour l’Afrique",
+    "subtitle": "Aide à la décision médicale basée sur des protocoles, conçue pour la souveraineté, l’échelle et la sécurité.",
+    "cta1": "Explorer les protocoles",
+    "cta2": "Accéder à l’API"
+  },
+  "nav": {
+    "about": "À propos",
+    "protocols": "Protocoles",
+    "developers": "Développeurs",
+    "contact": "Contact"
+  }
+}

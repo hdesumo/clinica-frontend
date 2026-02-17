@@ -1,0 +1,14 @@
+{
+  "hero": {
+    "title": "Clinical Intelligence Infrastructure for Africa",
+    "subtitle": "Protocol-driven decision support built for sovereignty, scale and safety.",
+    "cta1": "Explore Protocols",
+    "cta2": "Access API"
+  },
+  "nav": {
+    "about": "About",
+    "protocols": "Protocols",
+    "developers": "Developers",
+    "contact": "Contact"
+  }
+}
