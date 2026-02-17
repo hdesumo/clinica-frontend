@@ -1,19 +1,15 @@
-import { getDictionary } from "@/i18n/getDictionary";
+import { ReactNode } from "react";
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{ locale: "en" | "fr" }>;
+  children: ReactNode;
+  params: { locale: "en" | "fr" };
 }) {
-  const { locale } = await params;
-
-  const dictionary = await getDictionary(locale);
-
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {children}
-    </div>
+    <html lang={params.locale}>
+      <body>{children}</body>
+    </html>
   );
 }
