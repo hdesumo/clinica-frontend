@@ -9,6 +9,10 @@ export default async function Home({
 }) {
   const dictionary = await getDictionary(params.locale);
 
-  <HeroSection dictionary={dictionary} />
-  <StandardsSection />
+  return (
+    <>
+      <HeroSection dictionary={dictionary} />
+      <StandardsSection />
+    </>
+  );
 }
