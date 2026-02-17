@@ -5,9 +5,11 @@ import StandardsSection from "../../components/StandardsSection";
 export default async function Home({
   params,
 }: {
-  params: { locale: "en" | "fr" };
+  params: Promise<{ locale: string }>;
 }) {
-  const dictionary = await getDictionary(params.locale);
+  const { locale } = await params;
+
+  const dictionary = await getDictionary(locale);
 
   return (
     <>
