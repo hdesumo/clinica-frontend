@@ -5,51 +5,23 @@ import { useRouter } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter();
 
+  const [institution, setInstitution] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include", // 🔥 indispensable pour cookie HttpOnly
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        const data = await response.json().catch(() => null);
-        throw new Error(data?.detail || "Invalid credentials");
-      }
-
-      // ⚠️ Important : attendre que le cookie soit posé
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
-        credentials: "include",
-      });
-
-      router.push("/dashboard");
-    } catch (err: any) {
-      setError(err.message || "Login failed");
-    } finally {
+    // TEMPORAIRE — future connexion API ici
+    setTimeout(() => {
       setLoading(false);
-    }
+      router.push("/dashboard");
+    }, 1000);
   };
 
   return (
@@ -60,16 +32,23 @@ export default function LoginPage() {
         <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
 
           <h1 className="text-2xl font-bold mb-6 text-center">
-            Institution Login
+            Start 15-Day Free Trial
           </h1>
 
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleSignup} className="space-y-5">
 
-            {error && (
-              <div className="bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm">
-                {error}
-              </div>
-            )}
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Institution Name
+              </label>
+              <input
+                type="text"
+                required
+                className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-teal-700 outline-none"
+                value={institution}
+                onChange={(e) => setInstitution(e.target.value)}
+              />
+            </div>
 
             <div>
               <label className="block text-sm font-medium mb-2">
@@ -100,9 +79,9 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-teal-700 text-white py-2 rounded-lg font-semibold hover:bg-teal-800 transition disabled:opacity-60"
+              className="w-full bg-teal-700 text-white py-2 rounded-lg font-semibold hover:bg-teal-800 transition"
             >
-              {loading ? "Signing in..." : "Login"}
+              {loading ? "Creating account..." : "Create Account"}
             </button>
 
           </form>
