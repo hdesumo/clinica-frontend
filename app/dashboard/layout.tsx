@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -7,7 +9,7 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }) {
 
-  const cookieStore = await cookies(); // ⚠️ await obligatoire
+  const cookieStore = await cookies();
   const token = cookieStore.get("clinica_token");
 
   if (!token) {
