@@ -6,29 +6,25 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies(); // ✅ IMPORTANT
+
+  const cookieStore = await cookies(); // ⚠️ await obligatoire
   const token = cookieStore.get("clinica_token");
 
   if (!token) {
     redirect("/login");
   }
 
-  try {
-    const response = await fetch(
-      "https://api.clinica.it.com/auth/me",
-      {
-        headers: {
-          Cookie: `clinica_token=${token.value}`,
-        },
-        cache: "no-store",
-      }
-    );
-
-    if (!response.ok) {
-      redirect("/login");
+  const response = await fetch(
+    "https://api.clinica.it.com/auth/me",
+    {
+      headers: {
+        Cookie: `clinica_token=${token.value}`,
+      },
+      cache: "no-store",
     }
+  );
 
-  } catch {
+  if (!response.ok) {
     redirect("/login");
   }
 
