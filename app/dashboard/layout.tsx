@@ -6,7 +6,7 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies(); // ✅ IMPORTANT
   const token = cookieStore.get("clinica_token");
 
   if (!token) {
